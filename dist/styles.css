@@ -88,6 +88,7 @@ main{
 p{
   width: 50%;
   margin: auto;
+  font-size: 18px;
 }
 a{
   text-decoration: none;
