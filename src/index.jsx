@@ -1,6 +1,15 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
+const all = "https://wger.de/api/v2/exerciseinfo/?limit=227&language=2"
+const chest = "https://wger.de/api/v2/exerciseinfo/?language=2&category=11&limit=29"
+const back = "https://wger.de/api/v2/exerciseinfo/?language=2&category=12&limit=38"
+const shoulders = "https://wger.de/api/v2/exerciseinfo/?language=2&category=13&limit=33"
+const legs = "https://wger.de/api/v2/exerciseinfo/?language=2&category=9&limit=50"
+const triceps = "https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=5&limit=21"
+const biceps = "https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=1&limit=15"
+const abs = "https://wger.de/api/v2/exerciseinfo/?language=2&category=10&limit=28"
+
 class Exercises extends React.Component{
   constructor(props){
     super(props)
@@ -15,7 +24,7 @@ class Exercises extends React.Component{
         "Authorization": " Token 18800a66e3917105259880660857894f85fbb0f3"
       }
     }
-    fetch("https://wger.de/api/v2/exerciseinfo/?limit=227&language=2", init)
+    fetch(all, init)
       .then(res => res.json())
       .then(data => {
         let { results } = data
@@ -47,12 +56,16 @@ class Exercises extends React.Component{
                   <h3>Equipment used:</h3>
                   <div>
                     {
-                      exercise.equipment.length!==0 && exercise.equipment[0].name!=="none (bodyweight exercise)"
+                      exercise.equipment.length === 0
+                        ? "N/A"
+                        :
+
+                      exercise.equipment[0].name !== "none (bodyweight exercise)" && exercise.equipment.length !== 0
                         ? exercise.equipment.map(equip=>{
-                          return (
-                            <p>{equip.name}</p>
-                          )
-                        })
+                        return (
+                          <p>{equip.name}</p>
+                        )
+                      })
                         : "Your body duhh"
                     }
                   </div>

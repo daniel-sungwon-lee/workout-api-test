@@ -66,7 +66,7 @@ function allLegs(){
 }
 
 function triceps(){
-  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=5&limit=100" ,init)
+  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=5&limit=21" ,init)
     .then(res=>res.json())
     .then(data=>{
       let {results}=data
@@ -75,13 +75,13 @@ function triceps(){
 }
 
 function biceps() {
-  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=1&limit=100", init)
+  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=1&limit=15", init)
     .then(res => res.json())
     .then(data => {
       let { results } = data
       console.log(results)
     })
-  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=13&limit=100", init)
+  fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=13", init)
     .then(res => res.json())
     .then(data => {
       let { results } = data
