@@ -1,0 +1,111 @@
+body{
+  margin-bottom: 16rem;
+}
+img{
+  width: 200px;
+  background-color: white;
+  transition: all 0.5s ease-out;
+}
+*{
+  font-family: Product Sans;
+}
+
+img:hover{
+  transform: scale(1.3);
+  transform: translate(0,-30%);
+}
+section{
+  display: flex;
+}
+.column{
+  width: 100%;
+}
+div{
+  text-align: center;
+}
+.button{
+  border-radius: 1rem;
+  width: 11rem;
+  height: 4rem;
+  background-color: white;
+  color: black;
+  font-size: 30px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button:hover{
+  transform: scale(1.1);
+  background-color: #47C26A;
+  color: white;
+}
+.exercise{
+  background-color: #FAE2E2;
+  width: 75%;
+  margin: auto;
+  padding: 1rem 0;
+  border-radius: 33px;
+  margin-top: 2rem;
+  transition: all 0.3s ease-out;
+}
+.exercise:hover{
+  transform: translate(0, -10%);
+}
+.exercise.scale:hover{
+  transform: scale(1.1);
+}
+.fas{
+  font-size: 55px;
+  position: relative;
+  left: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.fas:hover{
+  transform: scale(1.1);
+}
+.fas.fa-arrow-left{
+  color: #28B351;
+}
+.fas.fa-arrow-left:hover{
+  color: #47C26A;
+}
+.fas.fa-times{
+  color: #E12121;
+}
+.fas.fa-times:hover{
+  color: #EF233C;
+  transform: rotate(180deg);
+}
+.bug{
+  filter: drop-shadow(0 6px 4px rgba(0,0,0,0.25));
+}
+main{
+  width: 80%;
+  margin: auto;
+}
+p{
+  width: 50%;
+  margin: auto;
+}
+a{
+  text-decoration: none;
+  color:  #008BF5;
+  transition: all 0.3s ease-out;
+}
+a:hover{
+  color: #47C26A;
+  transform: scale(1.1);
+}
+a:active{
+  color: #EF233C;
+}
+.fa-images{
+  font-size: 10rem;
+  position: static;
+}
+.exerciseDiv{
+  margin: 5rem 0;
+  border: solid black 3px;
+}
