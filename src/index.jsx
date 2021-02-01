@@ -14,7 +14,11 @@ const abs = "https://wger.de/api/v2/exerciseinfo/?language=2&category=10&limit=2
 class Exercises extends React.Component{
   constructor(props){
     super(props)
-    this.state={exercises:[]}
+    this.state={exercises:[], reps:0, sets:0}
+    this.handleClickReps=this.handleClickReps.bind(this)
+    this.handleClickSets=this.handleClickSets.bind(this)
+    this.handleClickRepsDown=this.handleClickRepsDown.bind(this)
+    this.handleClickSetsDown=this.handleClickSetsDown.bind(this)
   }
 
   componentDidMount(){
@@ -70,50 +74,68 @@ class Exercises extends React.Component{
     },2000)
   }
 
+  handleClickReps(event){
+    this.setState({reps:this.state.reps +1})
+  }
+
+  handleClickSets(event){
+    this.setState({sets:this.state.sets+1})
+  }
+
+  handleClickRepsDown(event){
+    this.setState({reps: this.state.reps-1})
+  }
+
+  handleClickSetsDown(event){
+    this.setState({sets: this.state.sets-1})
+  }
+
   render(){
     return (
       <main>
         {
           this.state.exercises.map(exercise=>{
             return (
-              <div className="exerciseDiv">
-                <h2>{exercise.name}</h2>
-                <h4>{exercise.id}</h4>
-                <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
-                <div>
-                  {exercise.images!==undefined && exercise.images.length!==0
-                    ? exercise.images.map(img => {
-                    return (
-                      <img src={img.image} width="200" alt="Exercise guide" />
-                      )
-                    })
-                    : <i class="fas fa-images"></i>
-                  }
-                </div>
-                <div>
-                  <h3>Equipment used:</h3>
-                  <div>
-                    {
-                      exercise.equipment.length === 0
-                        ? "N/A"
-                        :
-
-                      exercise.equipment[0].name !== "none (bodyweight exercise)" && exercise.equipment.length !== 0
-                        ? exercise.equipment.map(equip=>{
+              <div className="container">
+                <div className="exerciseDiv">
+                  <div className="row">
+                    <h2>{exercise.name}</h2>
+                  </div>
+                  <div className="row">
+                    <h4>{exercise.id}</h4>
+                  </div>
+                  <div className="row">
+                    {exercise.images !== undefined && exercise.images.length !== 0
+                      ? exercise.images.map(img => {
                         return (
-                          <p>{equip.name}</p>
+                          <img src={img.image} width="200" alt="Exercise guide" />
                         )
                       })
-                        : "Your body duhh"
+                      : <i class="fas fa-images"></i>
                     }
                   </div>
+                  <div className="row">
+                    <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
+                  </div>
+                  <div className="row">
+                    <a href={`https://www.google.com/search?q=${exercise.name}`} target="_blank">{`Click here to search for ${exercise.name}`}</a>
+                  </div>
                 </div>
-                <div>
-                  <h3>Exercise type:</h3>
-                  <div>{exercise.category.name}</div>
-                </div>
-                <div>
-                  <a href={`https://www.google.com/search?q=${exercise.name}`} target="_blank">{`Click here to search for ${exercise.name}`}</a>
+                <div className="buttons">
+                  <div className="group">
+                    <button className="button">Reps:  <span className="num">{this.state.reps}</span></button>
+                    <div className="sort">
+                      <i onClick={this.handleClickReps} class="fas fa-caret-up"></i>
+                      <i onClick={this.handleClickRepsDown} class="fas fa-caret-down"></i>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <button className="button">Sets:  <span className="num">{this.state.sets}</span></button>
+                    <div className="sort">
+                      <i onClick={this.handleClickSets} class="fas fa-caret-up"></i>
+                      <i onClick={this.handleClickSetsDown} class="fas fa-caret-down"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             )
