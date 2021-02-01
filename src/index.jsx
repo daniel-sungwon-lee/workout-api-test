@@ -9,6 +9,7 @@ const legs = "https://wger.de/api/v2/exerciseinfo/?language=2&category=9&limit=5
 const triceps = "https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=5&limit=21"
 const biceps = "https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=1&limit=15"
 const abs = "https://wger.de/api/v2/exerciseinfo/?language=2&category=10&limit=28"
+//triceps missing pike pushups, biceps missing brachialis exercises (2 exercises)*, legs missing calves (not important)
 
 class Exercises extends React.Component{
   constructor(props){
@@ -41,6 +42,7 @@ class Exercises extends React.Component{
             return (
               <div className="exerciseDiv">
                 <h2>{exercise.name}</h2>
+                <h4>{exercise.id}</h4>
                 <p>{exercise.description.replace(/(<([^>]+)>)/gi, "")}</p>
                 <div>
                   {exercise.images!==undefined && exercise.images.length!==0

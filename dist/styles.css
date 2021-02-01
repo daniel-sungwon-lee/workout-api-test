@@ -107,5 +107,6 @@ a:active{
 }
 .exerciseDiv{
   margin: 5rem 0;
-  border: solid black 3px;
+  border: solid black 5px;
+  border-radius: 33px;
 }
