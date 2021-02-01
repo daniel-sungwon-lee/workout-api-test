@@ -25,13 +25,49 @@ class Exercises extends React.Component{
         "Authorization": " Token 18800a66e3917105259880660857894f85fbb0f3"
       }
     }
-    fetch(all, init)
+    fetch(triceps, init)
       .then(res => res.json())
       .then(data => {
         let { results } = data
         this.setState({exercises:results})
       })
       .catch(err => console.error(err))
+
+      //brachialis (add with biceps)
+    /*setTimeout(()=>{
+      fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=8&muscles=13", init)
+      .then(res => res.json())
+      .then(data => {
+        let { results } = data
+
+        const id = [275, 193]
+        const brachialis = results.filter(exercise => {
+          return id.includes(exercise.id)
+        })
+
+        this.setState({exercises:[...this.state.exercises, ...brachialis]})
+      })
+      .catch(err=>console.error(err))
+    },2000)*/
+
+    //calves (add with legs)
+    /*setTimeout(() => {
+      fetch("https://wger.de/api/v2/exerciseinfo/?language=2&category=14", init)
+        .then(res => res.json())
+        .then(data => {
+          let { results } = data
+          this.setState({exercises:[...this.state.exercises,...results]})
+        })
+    }, 2000)*/
+
+    //pike pushups (add with triceps)
+    setTimeout(()=>{
+      fetch("https://wger.de/api/v2/exerciseinfo/361", init)
+        .then(res=>res.json())
+        .then(result=>{
+          this.setState({exercises:[...this.state.exercises, result]})
+        })
+    },2000)
   }
 
   render(){
